@@ -95,6 +95,18 @@ export default class GameScene extends Phaser.Scene {
       },
     });
 
+    this.starGroup = this.add.group({
+      removeCallback(star) {
+        star.scene.starPool.add(star);
+      },
+    });
+
+    this.starPool = this.add.group({
+      removeCallback(star) {
+        star.scene.starGroup.add(star);
+      },
+    });
+
     this.fireGroup = this.add.group({
       removeCallback(fire) {
         fire.scene.firePool.add(fire);
@@ -215,6 +227,26 @@ export default class GameScene extends Phaser.Scene {
           this.dimGroup.add(dim);
         }
       }
+
+      if (this.addedPlatforms > 1) {
+        if (Phaser.Math.Between(1, 100) <= gameOptions().starPercent) {
+          if (this.starPool.getLength()) {
+            const star = this.starPool.getFirst();
+            star.x = posX - 56;
+            star.y = posY - 50;
+            star.alpha = 1;
+            star.active = true;
+            star.visible = true;
+            this.starPool.remove(star);
+          } else {
+            const star = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 80, 'star');
+            star.setImmovable(true);
+            star.setVelocityX(platform.body.velocity.x);
+            star.setDepth(2);
+            this.starGroup.add(star);
+          }
+        }
+  
 
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
         if (this.firePool.getLength()) {
@@ -349,6 +381,13 @@ export default class GameScene extends Phaser.Scene {
       if (dim.x < -dim.displayWidth / 2) {
         this.dimGroup.killAndHide(dim);
         this.dimGroup.remove(dim);
+      }
+    }, this);
+
+    this.starGroup.getChildren().forEach(function (star) {
+      if (star.x < -star.displayWidth / 2) {
+        this.starGroup.killAndHide(star);
+        this.starGroup.remove(star);
       }
     }, this);
 

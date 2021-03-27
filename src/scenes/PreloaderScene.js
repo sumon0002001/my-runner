@@ -9,10 +9,11 @@ import box from '../assets/ui/grey_box.png';
 import checkBox from '../assets/ui/blue_boxCheckmark.png';
 import platform from '../assets/platforms/platform.png';
 import dim from '../assets/dim.png';
+import star from '../assets/star.png';
 import robo from '../assets/run.png';
 import die from '../assets/die.png';
 import jump from '../assets/jump.png';
-import background from '../assets/ui/BG.png';
+import background from '../assets/ui/bg_1.jpeg';
 import fire from '../assets/fire3.png';
 import cloud from '../assets/objects/cloud.png';
 import bush from '../assets/objects/Bush.png';
@@ -108,7 +109,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('playTwo', playTwo);
     this.load.image('box', box);
     this.load.image('checkedBox', checkBox);
-    this.load.audio('bgMusic', ['../src/assets/happy.mp3']);
+    this.load.audio('bgMusic', ['../src/assets/game.mp3']);
 
 
     this.load.image('platform', platform);
@@ -117,6 +118,7 @@ export default class PreloaderScene extends Phaser.Scene {
     this.load.image('water', water);
     this.load.image('bground', background);
     this.load.image('dim', dim);
+    this.load.image('star', star);
     this.load.image('tree', tree);
     this.load.image('bush', bush);
     this.load.image('stone', stone);

@@ -13,7 +13,7 @@ export default class TitleScene extends Phaser.Scene {
   create() {
     this.add.image(config.width / 2, config.height / 2, 'bground').setDepth(-1);
 
-    this.add.text(config.width / 2 - 220, config.height / 2 - 325, 'DIAMOND COLLECTOR', { color: '#5d1512', fontFamily: 'Arial', fontSize: '42px ' });
+    this.add.text(config.width / 2 - 180, config.height / 2 - 330, 'MY RUNNER', { color: '#1c11ba', fontFamily: 'Arial', fontSize: '52px ' });
 
     this.instructionButton = new Button(this, config.width / 2, config.height / 2 - 225, 'buttonOne', 'buttonTwo', 'Instructions', 'Instructions');
     this.instructionButton.setScale(0.6, 0.5);

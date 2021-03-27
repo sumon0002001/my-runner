@@ -11,8 +11,8 @@ export default class CreditsScene extends Phaser.Scene {
   create() {
     this.add.image(config.width / 2, config.height / 2, 'board').setScale(2);
 
-    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#fff' });
-    this.madeByText = this.add.text(0, 0, 'Created By: Sanad Abu Jbaara ', { fontSize: '26px', fill: '#fff' });
+    this.creditsText = this.add.text(0, 0, 'Credits', { fontSize: '32px', fill: '#eee' });
+    this.madeByText = this.add.text(0, 0, 'Created By: Mir Rawshan Ali ', { fontSize: '28px', fill: '#fff' });
     this.zone = this.add.zone(config.width / 2, config.height / 2, config.width, config.height);
 
     Phaser.Display.Align.In.Center(
@@ -30,8 +30,7 @@ export default class CreditsScene extends Phaser.Scene {
     this.creditsTween = this.tweens.add({
       targets: this.creditsText,
       y: -100,
-      ease: 'Power1',
-      duration: 3000,
+      duration: 5000,
       delay: 1000,
       onComplete() {
         this.destroy;
@@ -41,8 +40,7 @@ export default class CreditsScene extends Phaser.Scene {
     this.madeByTween = this.tweens.add({
       targets: this.madeByText,
       y: -300,
-      ease: 'Power1',
-      duration: 8000,
+      duration: 9000,
       delay: 1000,
       onComplete: function () {
         this.madeByTween.destroy;
