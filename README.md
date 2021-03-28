@@ -31,7 +31,7 @@
 
 <br>
 
-![](./src/assets/)
+![](./src/assets/screenshot.png)
 
 <br>
 
