@@ -228,24 +228,24 @@ export default class GameScene extends Phaser.Scene {
         }
       }
 
-      if (this.addedPlatforms > 1) {
-        if (Phaser.Math.Between(1, 100) <= gameOptions().starPercent) {
-          if (this.starPool.getLength()) {
-            const star = this.starPool.getFirst();
-            star.x = posX - 56;
-            star.y = posY - 50;
-            star.alpha = 1;
-            star.active = true;
-            star.visible = true;
-            this.starPool.remove(star);
-          } else {
-            const star = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 80, 'star');
-            star.setImmovable(true);
-            star.setVelocityX(platform.body.velocity.x);
-            star.setDepth(2);
-            this.starGroup.add(star);
-          }
-        }
+      // if (this.addedPlatforms > 1) {
+      //   if (Phaser.Math.Between(1, 100) <= gameOptions().starPercent) {
+      //     if (this.starPool.getLength()) {
+      //       const star = this.starPool.getFirst();
+      //       star.x = posX - 56;
+      //       star.y = posY - 50;
+      //       star.alpha = 1;
+      //       star.active = true;
+      //       star.visible = true;
+      //       this.starPool.remove(star);
+      //     } else {
+      //       const star = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 80, 'star');
+      //       star.setImmovable(true);
+      //       star.setVelocityX(platform.body.velocity.x);
+      //       star.setDepth(2);
+      //       this.starGroup.add(star);
+      //     }
+      //   }
   
 
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
