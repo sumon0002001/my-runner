@@ -246,7 +246,7 @@ export default class GameScene extends Phaser.Scene {
       //       this.starGroup.add(star);
       //     }
       //   }
-  
+
 
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
         if (this.firePool.getLength()) {

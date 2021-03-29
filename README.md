@@ -46,7 +46,7 @@
 
 
 
-A Platform Game called Diamond Collector, The idea of this game is taken from the famous Endless Runner game, But with Upgraded UI , UX, and animations.
+A Platform Game called My-Runner, The idea of this game is taken from the famous Endless Runner game, But with Upgraded UI , UX, and animations.
 
 
 ### Built With
