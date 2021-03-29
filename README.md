@@ -79,19 +79,12 @@ npm install npm@latest -g
 ```sh
 git clone git@github.com:sanadwj/Diamond-Collector.git
 ```
-3. Install NPM packages
+3. Install NPM packages, Run Webpack dev-server and  start the server
 ```sh
-npm install
+rm -rf node_modules package-lock.json && npm install && npm start
+
 ```
-4. Enter your API in `api.js`
-```JS
-const key = 'Enter Your API';
-```
-5. Run Webpack dev-server
-```sh
-npm run start
-```
-6. Run the Tests:
+4. Run the Tests:
 ```sh
 npm run test
 ```
