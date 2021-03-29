@@ -37,7 +37,7 @@
 
 ## Live Demo
 
-[Live Demo](https://rawcdn.githack.com/sumon0002001/my-runner/c66482e792b32945df6277a54d1f560a199a6941/index.html)
+[Live Demo](https://agitated-curran-7c280e.netlify.app/)
 
 <br>
 

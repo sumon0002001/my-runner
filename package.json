@@ -69,6 +69,6 @@
     "build": "webpack"
   },
   "keywords": [],
-  "author": "",
+  "author": "rawshan",
   "license": "ISC"
 }
