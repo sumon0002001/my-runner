@@ -175,7 +175,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms++;
+    this.addedPlatforms += 1;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -313,7 +313,7 @@ export default class GameScene extends Phaser.Scene {
       }
       this.player.anims.play('jumping');
       this.player.setVelocityY(gameOptions().jumpForce * -1);
-      this.playerJumps++;
+      this.playerJumps += 1;
 
       this.player.anims.stop();
     }
