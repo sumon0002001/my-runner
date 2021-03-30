@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars, max-len, func-names,prefer-const, class-methods-use-this */
 import Phaser from 'phaser';
 import config from '../Config/config';
 import gameOptions from '../Objects/gameOption';
