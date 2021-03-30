@@ -79,12 +79,27 @@ npm install npm@latest -g
 ```sh
 git clone https://github.com/sumon0002001/my-runner
 ```
-3. Install NPM packages, Run Webpack dev-server and  start the server
+3. Install NPM packages, 
 ```sh
-rm -rf node_modules package-lock.json && npm install && npm start
+- npm install
 
 ```
-4. Run the Tests:
+
+4. Now that you've installed the repository correctly. Go ahead and test it out by running the following command on the terminal
+```sh
+- npm run start
+
+```
+
+5. This command will open a localhost:9000 server where it will be running the game until you close the server by using the key combo CTRL + C on the terminal.
+
+And there you are running the game.
+
+Enjoy!
+
+
+
+6. Run the Tests:
 ```sh
 npm run test
 ```
