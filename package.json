@@ -65,7 +65,7 @@
     "test": "jest",
     "jest-watch": "jest --watch",
     "watch": "webpack --watch",
-    "start": "webpack serve --open chrome",
+    "start": "webpack serve",
     "build": "webpack",
     "lint": "eslint.js"
   },
