@@ -1,4 +1,4 @@
-/*    eslint-disable max-len */
+/*    eslint-disable max-len class-methods-use-this */
 
 import Phaser from 'phaser';
 import config from '../Config/config';
@@ -136,7 +136,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.dying = false;
 
-    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup,  () => {
+    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup, () => {
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('run');
       }
@@ -188,7 +188,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms++;
+    this.addedPlatforms +=1;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -197,7 +197,7 @@ export default class GameScene extends Phaser.Scene {
       platform.active = true;
       platform.visible = true;
       this.platformPool.remove(platform);
-      const newRatio = platformWidth / platform.displayWidth;
+      // const newRatio = platformWidth / platform.displayWidth;
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
     } else {
@@ -346,7 +346,7 @@ export default class GameScene extends Phaser.Scene {
       }
       this.player.anims.play('jumping');
       this.player.setVelocityY(gameOptions().jumpForce * -1);
-      this.playerJumps++;
+      this.playerJumps += 1;
 
       this.player.anims.stop();
     }
@@ -354,7 +354,7 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     if (this.player.y > config.height) {
-      let final = scored;
+      const final = scored;
       score.scoreSetter(final);
       score.postScores();
       scored = 0;
