@@ -77,7 +77,7 @@ npm install npm@latest -g
 1. Get a free API Key at [https://www.notion.so/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3](https://www.notion.so/Leaderboard-API-service-24c0c3c116974ac49488d4eb0267ade3)
 2. Clone the repo
 ```sh
-git clone git@github.com:sanadwj/Diamond-Collector.git
+git clone https://github.com/sumon0002001/my-runner
 ```
 3. Install NPM packages, Run Webpack dev-server and  start the server
 ```sh
