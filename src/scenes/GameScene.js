@@ -1,3 +1,5 @@
+/*    eslint-disable max-len */
+
 import Phaser from 'phaser';
 import config from '../Config/config';
 import gameOptions from '../Objects/gameOption';
@@ -134,7 +136,7 @@ export default class GameScene extends Phaser.Scene {
 
     this.dying = false;
 
-    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup, function () {
+    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup,  () => {
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('run');
       }
