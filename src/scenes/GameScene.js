@@ -1,5 +1,3 @@
-/*    eslint-disable max-len, class-methods-use-this */
-
 import Phaser from 'phaser';
 import config from '../Config/config';
 import gameOptions from '../Objects/gameOption';
@@ -96,18 +94,6 @@ export default class GameScene extends Phaser.Scene {
       },
     });
 
-    this.starGroup = this.add.group({
-      removeCallback(star) {
-        star.scene.starPool.add(star);
-      },
-    });
-
-    this.starPool = this.add.group({
-      removeCallback(star) {
-        star.scene.starGroup.add(star);
-      },
-    });
-
     this.fireGroup = this.add.group({
       removeCallback(fire) {
         fire.scene.firePool.add(fire);
@@ -136,13 +122,13 @@ export default class GameScene extends Phaser.Scene {
 
     this.dying = false;
 
-    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup, () => {
+    this.platformCollider = this.physics.add.collider(this.player, this.platformGroup, function () {
       if (!this.player.anims.isPlaying) {
         this.player.anims.play('run');
       }
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.dimGroup, (player, dim) => {
+    this.physics.add.overlap(this.player, this.dimGroup, function (player, dim) {
       this.tweens.add({
         targets: dim,
         y: dim.y - 74,
@@ -158,7 +144,7 @@ export default class GameScene extends Phaser.Scene {
       this.collectStar(player, dim);
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.fireGroup, () => {
+    this.physics.add.overlap(this.player, this.fireGroup, function () {
       this.dying = true;
       this.player.anims.play('died');
       this.player.scaleX = 0.25;
@@ -188,7 +174,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms += 1;
+    this.addedPlatforms++;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -197,7 +183,7 @@ export default class GameScene extends Phaser.Scene {
       platform.active = true;
       platform.visible = true;
       this.platformPool.remove(platform);
-      // const newRatio = platformWidth / platform.displayWidth;
+      const newRatio = platformWidth / platform.displayWidth;
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
     } else {
@@ -228,26 +214,6 @@ export default class GameScene extends Phaser.Scene {
           this.dimGroup.add(dim);
         }
       }
-
-      // if (this.addedPlatforms > 1) {
-      //   if (Phaser.Math.Between(1, 100) <= gameOptions().starPercent) {
-      //     if (this.starPool.getLength()) {
-      //       const star = this.starPool.getFirst();
-      //       star.x = posX - 56;
-      //       star.y = posY - 50;
-      //       star.alpha = 1;
-      //       star.active = true;
-      //       star.visible = true;
-      //       this.starPool.remove(star);
-      //     } else {
-      //       const star = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 80, 'star');
-      //       star.setImmovable(true);
-      //       star.setVelocityX(platform.body.velocity.x);
-      //       star.setDepth(2);
-      //       this.starGroup.add(star);
-      //     }
-      //   }
-
 
       if (Phaser.Math.Between(1, 100) <= gameOptions().firePercent) {
         if (this.firePool.getLength()) {
@@ -346,7 +312,7 @@ export default class GameScene extends Phaser.Scene {
       }
       this.player.anims.play('jumping');
       this.player.setVelocityY(gameOptions().jumpForce * -1);
-      this.playerJumps += 1;
+      this.playerJumps++;
 
       this.player.anims.stop();
     }
@@ -354,7 +320,7 @@ export default class GameScene extends Phaser.Scene {
 
   update() {
     if (this.player.y > config.height) {
-      const final = scored;
+      let final = scored;
       score.scoreSetter(final);
       score.postScores();
       scored = 0;
@@ -366,7 +332,7 @@ export default class GameScene extends Phaser.Scene {
 
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach((platform) => {
+    this.platformGroup.getChildren().forEach(function (platform) {
       const platformDistance = config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
@@ -378,35 +344,35 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    this.dimGroup.getChildren().forEach((dim) => {
+    this.dimGroup.getChildren().forEach(function (dim) {
       if (dim.x < -dim.displayWidth / 2) {
         this.dimGroup.killAndHide(dim);
         this.dimGroup.remove(dim);
       }
     }, this);
 
-    this.treeGroup.getChildren().forEach((tree) => {
+    this.treeGroup.getChildren().forEach(function (tree) {
       if (tree.x < -tree.displayWidth / 2) {
         this.treeGroup.killAndHide(tree);
         this.treeGroup.remove(tree);
       }
     }, this);
 
-    this.fireGroup.getChildren().forEach((fire) => {
+    this.fireGroup.getChildren().forEach(function (fire) {
       if (fire.x < -fire.displayWidth / 2) {
         this.fireGroup.killAndHide(fire);
         this.fireGroup.remove(fire);
       }
     }, this);
 
-    this.bushGroup.getChildren().forEach((bush) => {
+    this.bushGroup.getChildren().forEach(function (bush) {
       if (bush.x < -bush.displayWidth / 2) {
         this.bushGroup.killAndHide(bush);
         this.bushGroup.remove(bush);
       }
     }, this);
 
-    this.stoneGroup.getChildren().forEach((stone) => {
+    this.stoneGroup.getChildren().forEach(function (stone) {
       if (stone.x < -stone.displayWidth / 2) {
         this.stoneGroup.killAndHide(stone);
         this.stoneGroup.remove(stone);
@@ -414,7 +380,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
 
-    this.mashroomGroup.getChildren().forEach((mashroom) => {
+    this.mashroomGroup.getChildren().forEach(function (mashroom) {
       if (mashroom.x < -mashroom.displayWidth / 2) {
         this.mashroomGroup.killAndHide(mashroom);
         this.mashroomGroup.remove(mashroom);
@@ -432,8 +398,8 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  collectStar() {
-    this.dim.disableBody(true, true);
+  collectStar(player, dim) {
+    dim.disableBody(true, true);
     scored += 10;
     scoreText.setText(`${scored}`);
   }
