@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable no-unused-expressions, func-names */
 
 import Phaser from 'phaser';
 import config from '../Config/config';

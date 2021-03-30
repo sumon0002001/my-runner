@@ -1,4 +1,4 @@
-/*    eslint-disable max-len class-methods-use-this */
+/*    eslint-disable max-len, class-methods-use-this */
 
 import Phaser from 'phaser';
 import config from '../Config/config';
@@ -142,7 +142,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.dimGroup, function (player, dim) {
+    this.physics.add.overlap(this.player, this.dimGroup,  (player, dim) => {
       this.tweens.add({
         targets: dim,
         y: dim.y - 74,
@@ -158,7 +158,7 @@ export default class GameScene extends Phaser.Scene {
       this.collectStar(player, dim);
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.fireGroup, function () {
+    this.physics.add.overlap(this.player, this.fireGroup, () => {
       this.dying = true;
       this.player.anims.play('died');
       this.player.scaleX = 0.25;
@@ -366,7 +366,7 @@ export default class GameScene extends Phaser.Scene {
 
     let minDistance = config.width;
     let rightmostPlatformHeight = 0;
-    this.platformGroup.getChildren().forEach(function (platform) {
+    this.platformGroup.getChildren().forEach((platform) => {
       const platformDistance = config.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
@@ -378,42 +378,35 @@ export default class GameScene extends Phaser.Scene {
       }
     }, this);
 
-    this.dimGroup.getChildren().forEach(function (dim) {
+    this.dimGroup.getChildren().forEach((dim) => {
       if (dim.x < -dim.displayWidth / 2) {
         this.dimGroup.killAndHide(dim);
         this.dimGroup.remove(dim);
       }
     }, this);
 
-    this.starGroup.getChildren().forEach(function (star) {
-      if (star.x < -star.displayWidth / 2) {
-        this.starGroup.killAndHide(star);
-        this.starGroup.remove(star);
-      }
-    }, this);
-
-    this.treeGroup.getChildren().forEach(function (tree) {
+    this.treeGroup.getChildren().forEach((tree) => {
       if (tree.x < -tree.displayWidth / 2) {
         this.treeGroup.killAndHide(tree);
         this.treeGroup.remove(tree);
       }
     }, this);
 
-    this.fireGroup.getChildren().forEach(function (fire) {
+    this.fireGroup.getChildren().forEach((fire) => {
       if (fire.x < -fire.displayWidth / 2) {
         this.fireGroup.killAndHide(fire);
         this.fireGroup.remove(fire);
       }
     }, this);
 
-    this.bushGroup.getChildren().forEach(function (bush) {
+    this.bushGroup.getChildren().forEach((bush) => {
       if (bush.x < -bush.displayWidth / 2) {
         this.bushGroup.killAndHide(bush);
         this.bushGroup.remove(bush);
       }
     }, this);
 
-    this.stoneGroup.getChildren().forEach(function (stone) {
+    this.stoneGroup.getChildren().forEach((stone) => {
       if (stone.x < -stone.displayWidth / 2) {
         this.stoneGroup.killAndHide(stone);
         this.stoneGroup.remove(stone);
@@ -421,7 +414,7 @@ export default class GameScene extends Phaser.Scene {
     }, this);
 
 
-    this.mashroomGroup.getChildren().forEach(function (mashroom) {
+    this.mashroomGroup.getChildren().forEach((mashroom) => {
       if (mashroom.x < -mashroom.displayWidth / 2) {
         this.mashroomGroup.killAndHide(mashroom);
         this.mashroomGroup.remove(mashroom);
@@ -440,7 +433,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   collectStar(player, dim) {
-    dim.disableBody(true, true);
+    this.dim.disableBody(true, true);
     scored += 10;
     scoreText.setText(`${scored}`);
   }

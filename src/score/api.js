@@ -1,4 +1,4 @@
-const score = (function () {
+const score = (()=> {
   const key = 'mvL8ceYflPrxY5JcKGzL';
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`;
   const data = {};
@@ -21,14 +21,12 @@ const score = (function () {
     }
   }
 
-  // eslint-disable-next-line consistent-return
   async function getScores() {
     try {
       const response = await fetch(url);
       const data = await response.json();
       return data;
     } catch (error) {
-      // eslint-disable-next-line no-console
       return error;
     }
   }
@@ -47,5 +45,5 @@ const score = (function () {
     nameSetter,
     scoreSetter,
   };
-}());
-export default score;
+});
+export default score();
