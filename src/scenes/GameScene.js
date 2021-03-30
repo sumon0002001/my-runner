@@ -142,7 +142,7 @@ export default class GameScene extends Phaser.Scene {
       }
     }, null, this);
 
-    this.physics.add.overlap(this.player, this.dimGroup,  (player, dim) => {
+    this.physics.add.overlap(this.player, this.dimGroup, (player, dim) => {
       this.tweens.add({
         targets: dim,
         y: dim.y - 74,
@@ -188,7 +188,7 @@ export default class GameScene extends Phaser.Scene {
   }
 
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms +=1;
+    this.addedPlatforms += 1;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -432,7 +432,7 @@ export default class GameScene extends Phaser.Scene {
     }
   }
 
-  collectStar(player, dim) {
+  collectStar() {
     this.dim.disableBody(true, true);
     scored += 10;
     scoreText.setText(`${scored}`);

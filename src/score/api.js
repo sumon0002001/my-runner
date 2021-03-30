@@ -1,4 +1,4 @@
-const score = (()=> {
+const score = (() => {
   const key = 'mvL8ceYflPrxY5JcKGzL';
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`;
   const data = {};
