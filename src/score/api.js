@@ -1,5 +1,3 @@
-/* eslint-disable func-names */
-
 const score = (function () {
   const key = 'mvL8ceYflPrxY5JcKGzL';
   const url = `https://us-central1-js-capstone-backend.cloudfunctions.net/api/games/${key}/scores/`;
